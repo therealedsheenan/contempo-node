@@ -1,6 +1,10 @@
 # contempo-node
 Just another node API boilerplate.
 
+### Dependencies
+- Mongo Database
+
+
 ### Installation
 Install dependecies:
 
