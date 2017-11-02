@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'dist')))
 app.use(cors())
 
 if (!isProduction) {
-  app.use(errorhandler());
+  app.use(errorhandler())
 }
 
 // mongo database
