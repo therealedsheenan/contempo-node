@@ -46,8 +46,17 @@ import routes from './routes'
 
 app.use(routes)
 
+// Enable CORS from client-side
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:8080');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+})
+
 /// catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -81,6 +90,6 @@ app.use((err, req, res, next) => {
 })
 
 // finally, let's start our server...
-const server = app.listen( process.env.PORT || 3000, function(){
+const server = app.listen( process.env.PORT || 3000, () => {
   console.log('Listening on port ' + server.address().port)
 })
